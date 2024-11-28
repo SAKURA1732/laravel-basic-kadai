@@ -20,9 +20,10 @@ class PostsController extends Controller
     $post = Post::find($id);
 
     return view('posts.show', ['post' => $post]);
+
 }
 
-    public function create()
+public function create()
     {
         return view('posts.create'); 
 }
@@ -39,6 +40,7 @@ public function store(Request $request)
     $post->content = $request->input('content');
     $post->save();
 
+    $posts = DB::table('posts')->get();
     return redirect('posts');
 }
 }

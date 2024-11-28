@@ -36,7 +36,8 @@ Route::get('/', function () {
 });
 
 Route::get('/posts', [PostsController::class, 'index']);
-Route::get('/posts/create', [PostsController::class, 'create'])->middleware('auth');
+Route::get('/posts/create', [PostsController::class, 'create'])->name('posts.create') ->middleware('auth');
 
-Route::post('/posts/store', [PostsController::class, 'store'])->name('posts.store'); 
+Route::post('/posts/store', [PostsController::class, 'store'])->name('posts.store') ->middleware('auth');
+
 Route::get('/posts/{id}', [PostsController::class, 'show'])->name('posts.show');
